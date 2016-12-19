@@ -14,6 +14,8 @@ public class ReceiptPrinter {
             throw new IllegalArgumentException("Please enter a valid file to read");
         }
 
+        List<LineItem> lineItems = new ArrayList<>();
+
         // Read a file
         try {
             File inputFile = new File(args[0]);
@@ -21,16 +23,23 @@ public class ReceiptPrinter {
             BufferedReader reader = new BufferedReader(fileReader);
 
             String line = null;
-            List<LineItem> lineItems = new ArrayList<>();
 
             while ((line = reader.readLine()) != null) {
                 System.out.println(line);
-                LineItem lineItem = Parser.parseLineItemData(line);
+                lineItems.add(Parser.parseLineItemData(line));
             }
             reader.close();
 
         } catch(Exception ex) {
             ex.printStackTrace();
+        }
+
+        System.out.println(lineItems);
+        for (LineItem lineItem : lineItems) {
+            System.out.println(lineItem.description);
+            System.out.println(lineItem.quantity);
+            System.out.println(lineItem.price);
+            System.out.println(lineItem.imported);
         }
 
         // Write to a file

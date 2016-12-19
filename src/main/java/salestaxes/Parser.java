@@ -6,11 +6,11 @@ public class Parser {
         String[] nameAndQuantityAndPrice = data.split(" at ");
         String[] nameAndQuantity = nameAndQuantityAndPrice[0].split(" ", 2);
 
-        String name = nameAndQuantity[0];
-        int quantity = Integer.parseInt(nameAndQuantity[1]);
+        String description = nameAndQuantity[1];
+        int quantity = Integer.parseInt(nameAndQuantity[0]);
         double price = Double.parseDouble(nameAndQuantityAndPrice[1]);
-        
-        LineItem lineItem = new LineItem(name, quantity, price);
+
+        LineItem lineItem = new LineItem(description, quantity, price);
 
         return lineItem;
     }
