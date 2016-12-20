@@ -39,7 +39,8 @@ public class ReceiptPrinter {
             System.out.println(lineItem.description);
             System.out.println(lineItem.quantity);
             System.out.println(lineItem.price);
-            System.out.println(lineItem.imported);
+            System.out.println(lineItem.importationStatus);
+            System.out.println(lineItem.exemptionStatus);
         }
 
         // Write to a file
