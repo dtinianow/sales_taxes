@@ -36,10 +36,8 @@ public class Application {
             ex.printStackTrace();
         }
 
-
-        // Loop through each item
-        // Apply sales tax calculation
-//        Receipt receipt = new Receipt(Items);
+        Receipt receipt = new Receipt(Items);
+//        Formatter.formatReceipt(receipt);
 
         for (Item item : Items) {
             System.out.println(item.description);

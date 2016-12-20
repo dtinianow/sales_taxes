@@ -36,6 +36,8 @@ public class Item {
 
     public double getPrice() { return price; }
 
+    public double getTaxes() { return taxes; }
+
     public boolean isExempt() { return exemptionStatus; }
 
     public boolean isImported() { return importationStatus; }
