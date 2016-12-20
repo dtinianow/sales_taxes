@@ -41,6 +41,8 @@ public class Item {
 
     public double getTaxes() { return taxes; }
 
+    public void setTaxes(double amount) { this.taxes += amount; }
+
     public boolean isExempt() { return exemptionStatus; }
 
     public boolean isImported() { return importationStatus; }

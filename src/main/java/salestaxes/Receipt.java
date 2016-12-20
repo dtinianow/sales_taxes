@@ -4,15 +4,19 @@ import java.util.List;
 
 public class Receipt {
 
-    private List<Items> items;
+    private List<Item> items;
     private double salesTaxes;
     private double totalCost;
 
-    public class Receipt(List<Items> items) {
+    public Receipt(List<Item> items) {
         this.items = items;
     }
 
-    public List<Items> getItems() { return items; }
+    public List<Item> getItems() { return items; }
+
+//    public double getSalesTaxes() { return salesTaxes; }
+
+//    public double getTotalCost() { return totalCost; }
 
     public void setSalesTaxes(double amount) { this.salesTaxes += amount; }
 

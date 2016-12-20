@@ -14,7 +14,7 @@ public class Application {
             throw new IllegalArgumentException("Please enter a valid file to read");
         }
 
-        List<Item> Items = new ArrayList<>();
+        List<Item> items = new ArrayList<>();
 
         // Read a file
         try {
@@ -27,7 +27,7 @@ public class Application {
             while ((line = reader.readLine()) != null) {
                 System.out.println(line);
                 Item item = Parser.parseItemData(line);
-                Items.add(item);
+                items.add(item);
             }
             reader.close();
 
@@ -35,18 +35,27 @@ public class Application {
             ex.printStackTrace();
         }
 
-        Receipt receipt = new Receipt(Items);
+        Receipt receipt = new Receipt(items);
         TaxCalculator.applySalesTaxes(receipt);
-        String output = Formatter.formatReceipt(receipt);
+//        String output = Formatter.formatReceipt(receipt);
 
-        for (Item item : Items) {
-            System.out.println(item.getDescription);
-            System.out.println(item.getQuantity);
+
+
+        for (Item item : receipt.getItems()) {
+            System.out.println("---------------");
+            System.out.println(item.getDescription());
+            System.out.println(item.getQuantity());
             System.out.println(item.getPrice());
             System.out.println(item.isExempt());
             System.out.println(item.isImported());
-            System.out.println(item.getTaxes);
+            System.out.println(item.getTaxes());
         }
+
+//        System.out.println(receipt.getSalesTaxes());
+//        System.out.println(receipt.getTotalCost());
+
+
+
 
         // Write to a file
         try {

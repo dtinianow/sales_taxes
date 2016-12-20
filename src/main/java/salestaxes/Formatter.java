@@ -1,15 +1,13 @@
 package salestaxes;
 
 public final class Formatter {
-    public static String formatReceipt(Receipt receipt) {
-        List<Items> items = receipt.getItems();
-
-        for (item : items) {
+    public static void formatReceipt(Receipt receipt) {
+        for (Item item : receipt.getItems()) {
             String description = item.getDescription();
             int quantity = item.getQuantity();
             double priceWithTaxes = item.getPrice() + item.getTaxes();
         }
 
-        quantity + " " + description + ": " + priceWithTaxes
+//        return quantity + " " + description + ": " + priceWithTaxes + "\n";
     }
 }
