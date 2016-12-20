@@ -28,7 +28,6 @@ public class Application {
                 System.out.println(line);
                 Item item = Parser.parseItemData(line);
                 Items.add(item);
-//                Items.add(TaxCalculator.taxesDue(item));
             }
             reader.close();
 
@@ -37,15 +36,16 @@ public class Application {
         }
 
         Receipt receipt = new Receipt(Items);
-//        Formatter.formatReceipt(receipt);
+        TaxCalculator.applySalesTaxes(receipt);
+        String output = Formatter.formatReceipt(receipt);
 
         for (Item item : Items) {
-            System.out.println(item.description);
-            System.out.println(item.quantity);
+            System.out.println(item.getDescription);
+            System.out.println(item.getQuantity);
             System.out.println(item.getPrice());
             System.out.println(item.isExempt());
             System.out.println(item.isImported());
-            System.out.println(item.taxes);
+            System.out.println(item.getTaxes);
         }
 
         // Write to a file

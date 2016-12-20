@@ -17,13 +17,12 @@ public class Item {
         taxExemptItemsByCategory.get("medical").add("pill");
     }
 
-    public String description;
-    public int quantity;
-    public String category;
+    private String description;
+    private int quantity;
     private double price;
     private boolean importationStatus;
     private boolean exemptionStatus;
-    public double taxes;
+    private double taxes;
 
     public Item(String description, int quantity, double price) {
         this.description = description;
@@ -31,8 +30,12 @@ public class Item {
         this.price = price;
         this.importationStatus = determineIfImported();
         this.exemptionStatus = determineIfExempt();
-        this.taxes = TaxCalculator.applyTaxes(this);
+        this.taxes = 0.0;
     }
+
+    public String getDescription() { return description; }
+
+    public int getQuantity() { return quantity; }
 
     public double getPrice() { return price; }
 

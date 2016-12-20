@@ -1,6 +1,6 @@
 package salestaxes;
 
-public class Parser {
+public final class Parser {
 
     public static Item parseItemData(String data) {
         String[] nameAndQuantityAndPrice = data.split(" at ");
