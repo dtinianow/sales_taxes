@@ -10,9 +10,15 @@ public class TaxCalculator {
         double salesTax = 0.0;
         double importTax = 0.0;
 
-        if (!item.isExempt()) { salesTax += initialPrice * SALES_TAX_RATE; }
-        if (item.isImported()) { importTax += initialPrice * IMPORT_TAX_RATE; }
+        if (!item.isExempt()) { salesTax += roundUpToFiveHundreth(initialPrice * SALES_TAX_RATE); }
+        if (item.isImported()) { importTax += roundUpToFiveHundreth(initialPrice * IMPORT_TAX_RATE); }
 
-        return salesTax + importTax;
+        double totalTaxes = salesTax + importTax;
+
+        return Math.round(totalTaxes * 100.0) / 100.0;
+    }
+
+    private static double roundUpToFiveHundreth(double tax) {
+        return Math.ceil(tax * 20) / 20.0;
     }
 }

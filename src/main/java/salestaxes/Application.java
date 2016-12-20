@@ -41,7 +41,6 @@ public class Application {
         // Apply sales tax calculation
 //        Receipt receipt = new Receipt(Items);
 
-        System.out.println(Items);
         for (Item item : Items) {
             System.out.println(item.description);
             System.out.println(item.quantity);
