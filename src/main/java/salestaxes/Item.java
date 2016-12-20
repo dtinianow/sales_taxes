@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
 
-public class LineItem {
+public class Item {
 
     private static final Map<String, List<String>> taxExemptItemsByCategory = new HashMap<>();
     static {
@@ -19,18 +19,21 @@ public class LineItem {
 
     public String description;
     public int quantity;
-    public double price;
+    private double price;
     public String category;
     private boolean exemptionStatus;
     private boolean importationStatus;
-    private double salesTaxes;
 
-    public LineItem(String description, int quantity, double price) {
+    public Item(String description, int quantity, double price) {
         this.description = description;
         this.quantity = quantity;
         this.price = price;
         this.exemptionStatus = determineIfExempt();
         this.importationStatus = determineIfImported();
+    }
+
+    public double getPrice() {
+        return price;
     }
 
     public boolean isExempt() {

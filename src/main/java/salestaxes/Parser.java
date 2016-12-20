@@ -2,7 +2,7 @@ package salestaxes;
 
 public class Parser {
 
-    public static LineItem parseLineItemData(String data) {
+    public static Item parseItemData(String data) {
         String[] nameAndQuantityAndPrice = data.split(" at ");
         String[] nameAndQuantity = nameAndQuantityAndPrice[0].split(" ", 2);
 
@@ -10,8 +10,8 @@ public class Parser {
         int quantity = Integer.parseInt(nameAndQuantity[0]);
         double price = Double.parseDouble(nameAndQuantityAndPrice[1]);
 
-        LineItem lineItem = new LineItem(description, quantity, price);
+        Item item = new Item(description, quantity, price);
 
-        return lineItem;
+        return item;
     }
 }

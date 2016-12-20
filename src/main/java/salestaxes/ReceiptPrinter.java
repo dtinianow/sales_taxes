@@ -14,7 +14,7 @@ public class ReceiptPrinter {
             throw new IllegalArgumentException("Please enter a valid file to read");
         }
 
-        List<LineItem> lineItems = new ArrayList<>();
+        List<Item> Items = new ArrayList<>();
 
         // Read a file
         try {
@@ -26,9 +26,9 @@ public class ReceiptPrinter {
 
             while ((line = reader.readLine()) != null) {
                 System.out.println(line);
-                LineItem lineItem = Parser.parseLineItemData(line);
-                lineItems.add(lineItem);
-//                lineItems.add(TaxCalculator.applyTaxes(lineItem));
+                Item item = Parser.parseItemData(line);
+                Items.add(item);
+//                Items.add(TaxCalculator.taxesDue(item));
             }
             reader.close();
 
@@ -36,13 +36,13 @@ public class ReceiptPrinter {
             ex.printStackTrace();
         }
 
-        System.out.println(lineItems);
-        for (LineItem lineItem : lineItems) {
-            System.out.println(lineItem.description);
-            System.out.println(lineItem.quantity);
-            System.out.println(lineItem.price);
-            System.out.println(lineItem.isExempt());
-            System.out.println(lineItem.isImported());
+        System.out.println(Items);
+        for (Item item : Items) {
+            System.out.println(item.description);
+            System.out.println(item.quantity);
+            System.out.println(item.getPrice());
+            System.out.println(item.isExempt());
+            System.out.println(item.isImported());
         }
 
         // Write to a file
