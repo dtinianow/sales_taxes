@@ -7,33 +7,42 @@ import java.util.HashMap;
 
 public class LineItem {
 
-    private static final Map<String, List<String>> exemptItemsByCategory = new HashMap<>();
+    private static final Map<String, List<String>> taxExemptItemsByCategory = new HashMap<>();
     static {
-        exemptItemsByCategory.put("book", new ArrayList<String>());
-        exemptItemsByCategory.put("food", new ArrayList<String>());
-        exemptItemsByCategory.put("medical", new ArrayList<String>());
-        exemptItemsByCategory.get("book").add("book");
-        exemptItemsByCategory.get("food").add("chocolate");
-        exemptItemsByCategory.get("medical").add("pill");
+        taxExemptItemsByCategory.put("book", new ArrayList<String>());
+        taxExemptItemsByCategory.put("food", new ArrayList<String>());
+        taxExemptItemsByCategory.put("medical", new ArrayList<String>());
+        taxExemptItemsByCategory.get("book").add("book");
+        taxExemptItemsByCategory.get("food").add("chocolate");
+        taxExemptItemsByCategory.get("medical").add("pill");
     }
 
     public String description;
     public int quantity;
     public double price;
     public String category;
-    public boolean exemptionStatus;
-    public boolean importationStatus;
+    private boolean exemptionStatus;
+    private boolean importationStatus;
+    private double salesTaxes;
 
     public LineItem(String description, int quantity, double price) {
         this.description = description;
         this.quantity = quantity;
         this.price = price;
-        this.exemptionStatus = isExempt();
-        this.importationStatus = isImported();
+        this.exemptionStatus = determineIfExempt();
+        this.importationStatus = determineIfImported();
     }
 
-    private boolean isExempt() {
-        for (List<String> items : exemptItemsByCategory.values()) {
+    public boolean isExempt() {
+        return exemptionStatus;
+    }
+
+    public boolean isImported() {
+        return importationStatus;
+    }
+
+    private boolean determineIfExempt() {
+        for (List<String> items : taxExemptItemsByCategory.values()) {
             for (String item : items) {
                 if (description.toLowerCase().contains(item)) {
                     exemptionStatus = true;
@@ -44,7 +53,7 @@ public class LineItem {
         return exemptionStatus;
     }
 
-    private boolean isImported() {
+    private boolean determineIfImported() {
         return description.toLowerCase().contains("imported");
     }
 }

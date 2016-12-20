@@ -26,7 +26,9 @@ public class ReceiptPrinter {
 
             while ((line = reader.readLine()) != null) {
                 System.out.println(line);
-                lineItems.add(Parser.parseLineItemData(line));
+                LineItem lineItem = Parser.parseLineItemData(line);
+                lineItems.add(lineItem);
+//                lineItems.add(TaxCalculator.applyTaxes(lineItem));
             }
             reader.close();
 
@@ -39,8 +41,8 @@ public class ReceiptPrinter {
             System.out.println(lineItem.description);
             System.out.println(lineItem.quantity);
             System.out.println(lineItem.price);
-            System.out.println(lineItem.importationStatus);
-            System.out.println(lineItem.exemptionStatus);
+            System.out.println(lineItem.isExempt());
+            System.out.println(lineItem.isImported());
         }
 
         // Write to a file
