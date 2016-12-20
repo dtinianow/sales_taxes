@@ -19,30 +19,28 @@ public class Item {
 
     public String description;
     public int quantity;
-    private double price;
     public String category;
-    private boolean exemptionStatus;
+    private double price;
     private boolean importationStatus;
+    private boolean exemptionStatus;
+    public double taxes;
 
     public Item(String description, int quantity, double price) {
         this.description = description;
         this.quantity = quantity;
         this.price = price;
-        this.exemptionStatus = determineIfExempt();
         this.importationStatus = determineIfImported();
+        this.exemptionStatus = determineIfExempt();
+        this.taxes = TaxCalculator.applyTaxes(this);
     }
 
-    public double getPrice() {
-        return price;
-    }
+    public double getPrice() { return price; }
 
-    public boolean isExempt() {
-        return exemptionStatus;
-    }
+    public boolean isExempt() { return exemptionStatus; }
 
-    public boolean isImported() {
-        return importationStatus;
-    }
+    public boolean isImported() { return importationStatus; }
+
+    private boolean determineIfImported() { return description.toLowerCase().contains("imported"); }
 
     private boolean determineIfExempt() {
         for (List<String> items : taxExemptItemsByCategory.values()) {
@@ -54,9 +52,5 @@ public class Item {
             }
         }
         return exemptionStatus;
-    }
-
-    private boolean determineIfImported() {
-        return description.toLowerCase().contains("imported");
     }
 }

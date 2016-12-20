@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class ReceiptPrinter {
+public class Application {
     public static void main(String[] args) {
 
         // Check for correct number of arguments
@@ -36,6 +36,11 @@ public class ReceiptPrinter {
             ex.printStackTrace();
         }
 
+
+        // Loop through each item
+        // Apply sales tax calculation
+//        Receipt receipt = new Receipt(Items);
+
         System.out.println(Items);
         for (Item item : Items) {
             System.out.println(item.description);
@@ -43,6 +48,7 @@ public class ReceiptPrinter {
             System.out.println(item.getPrice());
             System.out.println(item.isExempt());
             System.out.println(item.isImported());
+            System.out.println(item.taxes);
         }
 
         // Write to a file
