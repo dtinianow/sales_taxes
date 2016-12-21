@@ -7,9 +7,9 @@ public final class Parser {
         String[] quantityAndDescription = itemAndPrice[0].split(" ", 2);
 
         String description = quantityAndDescription[1];
-        int quantity = Integer.parseInt(quantityAndDescription[0]);
-        double price = Double.parseDouble(itemAndPrice[1]);
+        String quantity = quantityAndDescription[0];
+        String price = itemAndPrice[1];
 
-        return new Item(description, quantity, price);
+        return new Item(description, Integer.parseInt(quantity), Double.parseDouble(price));
     }
 }
