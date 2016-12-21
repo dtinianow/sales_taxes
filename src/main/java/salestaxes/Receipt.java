@@ -8,7 +8,11 @@ public class Receipt {
     private double salesTaxes;
     private double totalCost;
 
-    public Receipt(List<Item> items) { this.items = items; }
+    public Receipt(List<Item> items) {
+        this.items = items;
+
+        finalizeCosts();
+    }
 
     public List<Item> getItems() { return items; }
 
@@ -16,7 +20,10 @@ public class Receipt {
 
     public double getTotalCost() { return totalCost; }
 
-    public void setTotalTaxes(double amount) { this.salesTaxes += amount; }
-
-    public void setTotalCost(double amount) { this.totalCost += amount; }
+    private void finalizeCosts() {
+        for(Item item : items) {
+            this.salesTaxes += item.getTaxes();
+            this.totalCost += item.getPriceWithTaxes();
+        }
+    }
 }

@@ -30,6 +30,7 @@ public class Item {
         this.price = price;
         this.importationStatus = determineIfImported();
         this.exemptionStatus = determineIfExempt();
+        this.taxes = TaxCalculator.calculateSalesTaxes(this);
     }
 
     public String getDescription() { return description; }
@@ -41,8 +42,6 @@ public class Item {
     public double getTaxes() { return taxes; }
 
     public double getPriceWithTaxes() { return price + taxes; }
-
-    public void setTaxes(double amount) { this.taxes = amount; }
 
     public boolean isExempt() { return exemptionStatus; }
 

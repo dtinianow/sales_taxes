@@ -14,7 +14,6 @@ public class Application {
 
     private static String createReceipt(List<Item> items) {
         Receipt receipt = new Receipt(items);
-        TaxCalculator.applySalesTaxes(receipt);
         return Formatter.formatReceipt(receipt);
     }
 }
