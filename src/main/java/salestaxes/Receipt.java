@@ -16,7 +16,7 @@ public class Receipt {
 
     public double getTotalCost() { return totalCost; }
 
-    public void setSalesTaxes(double amount) { this.salesTaxes += amount; }
+    public void setTotalTaxes(double amount) { this.salesTaxes += amount; }
 
     public void setTotalCost(double amount) { this.totalCost += amount; }
 }

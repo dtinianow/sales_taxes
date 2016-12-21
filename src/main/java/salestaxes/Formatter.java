@@ -12,7 +12,7 @@ public final class Formatter {
 
         for (Item item : receipt.getItems()) { receiptText += formatItem(item); }
 
-        receiptText += formatSalesTaxes(receipt) + formatTotal(receipt);
+        receiptText += formatTaxes(receipt) + formatTotal(receipt);
 
         return receiptText;
     }
@@ -25,7 +25,7 @@ public final class Formatter {
         return quantity + " " + description + ": " + roundOff.format(priceWithTaxes) + "\n";
     }
 
-    private static String formatSalesTaxes(Receipt receipt) {
+    private static String formatTaxes(Receipt receipt) {
         return "Sales Taxes: " + roundOff.format(receipt.getSalesTaxes()) + "\n";
     }
 
