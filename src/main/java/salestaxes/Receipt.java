@@ -14,9 +14,9 @@ public class Receipt {
 
     public List<Item> getItems() { return items; }
 
-//    public double getSalesTaxes() { return salesTaxes; }
+    public double getSalesTaxes() { return salesTaxes; }
 
-//    public double getTotalCost() { return totalCost; }
+    public double getTotalCost() { return totalCost; }
 
     public void setSalesTaxes(double amount) { this.salesTaxes += amount; }
 
