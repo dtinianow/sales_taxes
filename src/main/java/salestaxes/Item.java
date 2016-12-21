@@ -43,7 +43,7 @@ public class Item {
 
     public double getPriceWithTaxes() { return price + taxes; }
 
-    public void setTaxes(double amount) { this.taxes += amount; }
+    public void setTaxes(double amount) { this.taxes = amount; }
 
     public boolean isExempt() { return exemptionStatus; }
 

@@ -3,15 +3,25 @@ package salestaxes;
 public final class Parser {
 
     public static Item parseItemData(String data) {
-        String[] nameAndQuantityAndPrice = data.split(" at ");
-        String[] nameAndQuantity = nameAndQuantityAndPrice[0].split(" ", 2);
+        String[] itemAndPrice = data.split(" at ");
+        String[] quantityAndDescription = itemAndPrice[0].split(" ", 2);
 
-        String description = nameAndQuantity[1];
-        int quantity = Integer.parseInt(nameAndQuantity[0]);
-        double price = Double.parseDouble(nameAndQuantityAndPrice[1]);
+        String description = findDescription(quantityAndDescription);
+        int quantity = findQuantity(quantityAndDescription);
+        double price = findPrice(itemAndPrice);
 
-        Item item = new Item(description, quantity, price);
+        return new Item(description, quantity, price);
+    }
 
-        return item;
+    private static String findDescription(String[] data) {
+        return data[1];
+    }
+
+    private static int findQuantity(String[] data) {
+        return Integer.parseInt(data[0]);
+    }
+
+    private static double findPrice(String[] data) {
+        return Double.parseDouble(data[1]);
     }
 }
