@@ -8,9 +8,7 @@ public class Receipt {
     private double salesTaxes;
     private double totalCost;
 
-    public Receipt(List<Item> items) {
-        this.items = items;
-    }
+    public Receipt(List<Item> items) { this.items = items; }
 
     public List<Item> getItems() { return items; }
 

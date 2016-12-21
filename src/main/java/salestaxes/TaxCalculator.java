@@ -26,12 +26,7 @@ public final class TaxCalculator {
         }
     }
 
-
     private static double roundUpTax(double tax) {
         return Math.ceil(tax * 20) / 20.0;
     }
-
-//    private static double roundOff(double num) {
-//        return Math.round(num * 100.0) / 100.0;
-//    }
 }

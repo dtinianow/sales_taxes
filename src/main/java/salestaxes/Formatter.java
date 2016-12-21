@@ -7,22 +7,29 @@ public final class Formatter {
 
     private static final DecimalFormat roundOff = new DecimalFormat("0.00");
 
-    public static String prepareReceipt(Receipt receipt) {
+    public static String formatReceipt(Receipt receipt) {
         String receiptText = "";
 
-        for (Item item : receipt.getItems()) {
-            String description = item.getDescription();
-            int quantity = item.getQuantity();
-            double priceWithTaxes = item.getPrice() + item.getTaxes();
+        for (Item item : receipt.getItems()) { receiptText += formatItem(item); }
 
-            String itemText = quantity + " " + description + ": " + roundOff.format(priceWithTaxes) + "\n";
-
-            receiptText += itemText;
-        }
-
-        receiptText += ("Sales Taxes: " + roundOff.format(receipt.getSalesTaxes()) + "\n");
-        receiptText += ("Total: " + roundOff.format(receipt.getTotalCost()));
+        receiptText += formatSalesTaxes(receipt) + formatTotal(receipt);
 
         return receiptText;
+    }
+
+    private static String formatItem(Item item) {
+        String description = item.getDescription();
+        int quantity = item.getQuantity();
+        double priceWithTaxes = item.getPriceWithTaxes();
+
+        return quantity + " " + description + ": " + roundOff.format(priceWithTaxes) + "\n";
+    }
+
+    private static String formatSalesTaxes(Receipt receipt) {
+        return "Sales Taxes: " + roundOff.format(receipt.getSalesTaxes()) + "\n";
+    }
+
+    private static String formatTotal(Receipt receipt) {
+        return "Total: " + roundOff.format(receipt.getTotalCost());
     }
 }

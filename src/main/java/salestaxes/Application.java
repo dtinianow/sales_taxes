@@ -38,9 +38,7 @@ public class Application {
         Receipt receipt = new Receipt(items);
         TaxCalculator.applySalesTaxes(receipt);
 
-        String output = Formatter.prepareReceipt(receipt);
-
-        System.out.println(output);
+        String output = Formatter.formatReceipt(receipt);
 
         // Write to a file
         try {
@@ -48,6 +46,7 @@ public class Application {
             String outputFile = "src/resources/output-files/receipt-" + timestamp + ".txt";
             BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile));
             writer.write(output);
+            System.out.println(output);
             writer.close();
         } catch(IOException ex) {
             ex.printStackTrace();
