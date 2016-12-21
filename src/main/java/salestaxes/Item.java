@@ -30,7 +30,6 @@ public class Item {
         this.price = price;
         this.importationStatus = determineIfImported();
         this.exemptionStatus = determineIfExempt();
-        this.taxes = 0.0;
     }
 
     public String getDescription() { return description; }
