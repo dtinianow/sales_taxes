@@ -6,18 +6,23 @@ import java.util.Date;
 
 public class MyFileWriter {
 
-    public static void printReceipt(String output) {
+    public static void printReceipt(String receiptText) {
         try {
-            String timestamp = new SimpleDateFormat("yyyy.MM.dd-HH:mm:ss:SS").format(new Date());
-            String outputFile = "src/resources/output-files/receipt-" + timestamp + ".txt";
-            BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile));
-            writer.write(output);
-            System.out.println(output);
-            System.out.println("Your receipt has been printed to " + outputFile);
+            String receiptFile = createReceiptFile("src/resources/output-files/");
+            BufferedWriter writer = new BufferedWriter(new FileWriter(receiptFile));
+            writer.write(receiptText);
+            System.out.println(receiptText + "\nYour receipt has been printed to " + receiptFile);
             writer.close();
         } catch(IOException ex) {
             ex.printStackTrace();
         }
     }
 
+    private static String generateTimestamp() {
+        return new SimpleDateFormat("yyyy.MM.dd-HH:mm:ss:SS").format(new Date());
+    }
+
+    private static String createReceiptFile(String directory) {
+        return directory + "receipt-" + generateTimestamp() + ".txt";
+    }
 }
