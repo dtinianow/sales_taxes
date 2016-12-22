@@ -12,17 +12,17 @@ public class ItemTest {
     public void itShouldCreateANewItemWithDefaultValues() {
         String description = "balloons";
         int quantity = 4;
-        double price = 5.99;
+        double price = 1.00;
 
         Item item = new Item(description, quantity, price);
 
         assertThat(item, instanceOf(Item.class));
         assertEquals("balloons", item.getDescription());
         assertEquals(4, item.getQuantity());
-        assertEquals(5.99, item.getPrice(), 0.001);
+        assertEquals(1.00, item.getPrice(), 0.001);
         assertEquals(false, item.isExempt());
         assertEquals(false, item.isImported());
-        assertEquals(0.0, item.getTaxes(), 0.001);
+        assertEquals(0.10, item.getTaxes(), 0.001);
     }
 
     @Test
@@ -49,16 +49,5 @@ public class ItemTest {
         assertEquals(false, nonExemptItemB.isExempt());
         assertEquals(true, exemptItemA.isExempt());
         assertEquals(true, exemptItemB.isExempt());
-    }
-
-    @Test
-    public void itShouldSetTaxes() {
-        Item item = new Item("chocolate", 2, 1.50);
-
-        assertEquals(0.0, item.getTaxes(), 0.001);
-
-        item.setTaxes(3.45);
-
-        assertEquals(3.45, item.getTaxes(), 0.001);
     }
 }
