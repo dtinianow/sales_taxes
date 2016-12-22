@@ -17,9 +17,9 @@ public class ItemTest {
         Item item = new Item(description, quantity, price);
 
         assertThat(item, instanceOf(Item.class));
-        assertEquals("balloons", item.getDescription());
-        assertEquals(4, item.getQuantity());
-        assertEquals(1.00, item.getPrice(), 0.001);
+        assertEquals(description, item.getDescription());
+        assertEquals(quantity, item.getQuantity());
+        assertEquals(price, item.getPrice(), 0.001);
         assertEquals(false, item.isExempt());
         assertEquals(false, item.isImported());
         assertEquals(0.10, item.getTaxes(), 0.001);
@@ -49,5 +49,97 @@ public class ItemTest {
         assertEquals(false, nonExemptItemB.isExempt());
         assertEquals(true, exemptItemA.isExempt());
         assertEquals(true, exemptItemB.isExempt());
+    }
+
+    @Test
+    public void itCanGetQuantity() {
+        String description = "balloons";
+        int quantity = 4;
+        double price = 1.00;
+
+        Item item = new Item(description, quantity, price);
+
+        int expected = item.getQuantity();
+
+        assertEquals(expected, quantity);
+    }
+
+    @Test
+    public void itCanGetDescription() {
+        String description = "balloons";
+        int quantity = 4;
+        double price = 1.00;
+
+        Item item = new Item(description, quantity, price);
+
+        String expected = item.getDescription();
+
+        assertEquals(expected, description);
+    }
+
+    @Test
+    public void itCanGetPrice() {
+        String description = "balloons";
+        int quantity = 4;
+        double price = 1.00;
+
+        Item item = new Item(description, quantity, price);
+
+        double expected = item.getPrice();
+
+        assertEquals(expected, price, 0.001);
+    }
+
+    @Test
+    public void itCanGetTaxes() {
+        String description = "balloons";
+        int quantity = 4;
+        double price = 1.00;
+
+        Item item = new Item(description, quantity, price);
+
+        double expected = item.getTaxes();
+
+        assertEquals(expected, 0.10, 0.001);
+    }
+
+    @Test
+    public void itCanGetPriceWithTaxes() {
+        String description = "balloons";
+        int quantity = 4;
+        double price = 1.00;
+
+        Item item = new Item(description, quantity, price);
+
+        double expected = item.getPriceWithTaxes();
+        double priceWithTaxes = price + item.getTaxes();
+
+        assertEquals(expected, priceWithTaxes, 0.001);
+    }
+
+    @Test
+    public void itCanGetExemptionStatus() {
+        String description = "chocolate";
+        int quantity = 4;
+        double price = 1.00;
+
+        Item item = new Item(description, quantity, price);
+
+        boolean expected = item.isExempt();
+
+        assertEquals(expected, true);
+    }
+
+    @Test
+    public void itCanGetImportationStatus() {
+        String description = "imported chocolate";
+        int quantity = 4;
+        double price = 1.00;
+
+        Item item = new Item(description, quantity, price);
+
+        boolean expected = item.isImported();
+
+        assertEquals(expected, true);
     }
 }
