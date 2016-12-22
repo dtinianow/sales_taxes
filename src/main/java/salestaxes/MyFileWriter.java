@@ -10,9 +10,11 @@ public class MyFileWriter {
         try {
             String receiptFile = createReceiptFile("src/resources/output-files/");
             BufferedWriter writer = new BufferedWriter(new FileWriter(receiptFile));
+
             writer.write(receiptText);
             System.out.println(receiptText + "\nYour receipt has been printed to " + receiptFile);
             writer.close();
+
         } catch(IOException ex) {
             ex.printStackTrace();
         }
