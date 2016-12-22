@@ -5,10 +5,9 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        if (args.length != 1) { throw new IllegalArgumentException("Please enter a valid file to read"); }
-
-        List<Item> items = MyFileReader.readItemData(args[0]);;
-        String receiptText = Formatter.formatReceipt(new Receipt(items));
+        List<Item> items = MyFileReader.readItemData(args[0]);
+        Receipt receipt = new Receipt(items);
+        String receiptText = Formatter.formatReceipt(receipt);
         MyFileWriter.printReceipt(receiptText);
     }
 }
