@@ -2,8 +2,7 @@
 SALES TAXES
 ---------------------------------------------
 
-This was my first Java project. In order to complete this project, I had to learn the Java language, how to build and
-test a Java application, and how to use an IDE.
+This was my first Java project. In order to complete this project, I had to learn the Java language, how to build and test a Java application, and how to use an IDE.
 
 The goal of this project was to read a file of item data, calculate sales taxes on the items, and output a receipt file.
 
@@ -38,8 +37,7 @@ RUN APPLICATION FROM THE COMMAND LINE
 
    * Sample command to read multiple files at once:
 
-        $ mvn exec:java -Dexec.mainClass="salestaxes.Application" -Dexec.args="./src/resources/input-files/input-1.txt
-          ./src/resources/input-files/input-2.txt ./src/resources/input-files/input-3.txt"
+        $ mvn exec:java -Dexec.mainClass="salestaxes.Application" -Dexec.args="./src/resources/input-files/input-1.txt ./src/resources/input-files/input-2.txt ./src/resources/input-files/input-3.txt"
 
 
 - Valid input files can be found in `./src/resources/input-files`
